@@ -1,0 +1,85 @@
+@font-face {
+  font-family: 'museo_sans300';
+  src: url('../assets/fonts/MuseoSans_300-webfont.eot');
+  src: url('../assets/fonts/MuseoSans_300-webfont.eot?#iefix') format('embedded-opentype'),
+  url('../assets/fonts/MuseoSans_300-webfont.woff') format('woff'),
+  url('../assets/fonts/MuseoSans_300-webfont.ttf') format('truetype'),
+  url('../assets/fonts/MuseoSans_300-webfont.svg#museo_sans300') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  padding-top: 70px;
+  background-color: #F9F2EA;
+  color:#8C8985 ;
+  font-family:"museo_sans300",Verdana,"Gill Sans","Lucida Grande",Helvetica,Arial,sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+
+.navbar {
+  background-color: #ED9B33;
+  color: #BE5400;
+  text-align: center;
+  padding-top: 10px;
+  font-size: 1.6em;
+}
+
+footer {
+  margin: 50px 0;
+  text-align: center;
+
+  p {
+    font-size: 0.7em;
+    margin-top: 10px;
+  }
+}
+
+/* Brand Colors */
+#SingleStoneLogo {
+  width: 150px;
+
+  #single path {
+    fill: #ED9B33;
+  }
+
+  #stone path {
+    fill: #8B7C5E;
+  }
+
+  #ripple path {
+    fill: #7594B3;
+  }
+}
+
+
+/* Do not remove this comments bellow. It's the markers used by gulp-inject to inject
+   all your less files automatically */
+// injector
+// endinjector
+
+
+@media (min-width: 768px) {
+  #SingleStoneLogo {
+    width: 200px;
+  }
+
+  footer {
+    p {
+      font-size: 1em;
+      margin-top: 15px;
+    }
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  #SingleStoneLogo {
+    width: 200px
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  #SingleStoneLogo {
+    width: 150px;
+  }
+}
