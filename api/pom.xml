@@ -41,6 +41,7 @@
 
     <!-- Package as an executable jar -->
     <build>
+        <finalName>api</finalName>
         <pluginManagement>
             <plugins>
                 <plugin>

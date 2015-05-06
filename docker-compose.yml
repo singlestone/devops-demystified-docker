@@ -1,0 +1,14 @@
+web:
+    build: ./ui
+    links:
+    - api
+    ports:
+    - "8081:80"
+api:
+    build: ./api
+    links:
+    - mongo
+    ports:
+    - "8082:8080"
+mongo:
+    build: ./mongo
