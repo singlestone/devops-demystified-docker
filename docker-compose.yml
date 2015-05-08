@@ -4,11 +4,17 @@ web:
     - api
     ports:
     - "8081:80"
+    volumes_from:
+    - builder
 api:
     build: ./api
     links:
     - mongo
     ports:
     - "8082:8080"
+    volumes_from:
+    - builder
 mongo:
-    build: ./mongo
+    image: mongo:latest
+builder:
+    build: .
