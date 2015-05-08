@@ -16,19 +16,20 @@ import java.util.HashMap;
 @Service
 public final class TwilioSmsService implements SmsService {
     private static final Logger LOGGER = LoggerFactory.getLogger(TwilioSmsService.class);
-    private static final String FROM = "+18046328573";
 
     private final TwilioRestClient twilio;
+    private final TwilioSettings settings;
 
     @Autowired
-    public TwilioSmsService(final Provider<TwilioRestClient> twilioRestClientProvider) {
+    public TwilioSmsService(final Provider<TwilioRestClient> twilioRestClientProvider, final TwilioSettings settings) {
         this.twilio = twilioRestClientProvider.provide();
+        this.settings = settings;
     }
 
     @Override
     public void sendText(final String to, final String message) {
         HashMap<String, String> params = new HashMap<>();
-        params.put("From", FROM);
+        params.put("From", settings.getPhoneNumber());
         params.put("To", to);
         params.put("Body", message);
 

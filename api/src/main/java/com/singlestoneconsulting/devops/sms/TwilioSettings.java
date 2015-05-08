@@ -5,9 +5,10 @@ import org.springframework.stereotype.Component;
 
 @Component
 @ConfigurationProperties(prefix="twilio")
-public class TwilioCredentials {
+public class TwilioSettings {
     private String sid;
     private String authToken;
+    private String phoneNumber;
 
     public String getSid() {
         return sid;
@@ -23,5 +24,13 @@ public class TwilioCredentials {
 
     public void setAuthToken(String authToken) {
         this.authToken = authToken;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 }
