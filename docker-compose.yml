@@ -1,3 +1,5 @@
+builder:
+    build: .
 web:
     build: ./ui
     links:
@@ -16,5 +18,3 @@ api:
     - builder
 mongo:
     image: mongo:latest
-builder:
-    build: .
