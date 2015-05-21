@@ -1,0 +1,46 @@
+ENV['VAGRANT_DEFAULT_PROVIDER'] = 'docker'
+Vagrant.require_version ">= 1.6.3"
+
+VAGRANTFILE_API_VERSION = "2"
+DOCKER_HOST_VAGRANTFILE = "./docker-host/Vagrantfile"
+ 
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+  
+  # UI Dev machine
+  config.vm.define "uidev" do |a|
+    a.vm.provider "docker" do |d|
+      d.vagrant_vagrantfile = "#{DOCKER_HOST_VAGRANTFILE}"
+      d.name = "uidev"
+      d.build_dir = "./ui"
+      d.build_args = ["-t=uidev"]
+      d.remains_running = false
+      d.volumes = ["/app/ui/:/app:rw"]
+      d.create_args = ["-p", "3000:3000", "-p", "3001:3001"]
+      d.link("apidev:api")
+    end
+  end
+  
+  # API Dev machine
+  config.vm.define "apidev" do |a|
+    a.vm.provider "docker" do |d|
+      d.vagrant_vagrantfile = "#{DOCKER_HOST_VAGRANTFILE}"
+      d.name = "apidev"
+      d.build_dir = "./api"
+      d.build_args = ["-t=apidev"]
+      d.remains_running = false
+      d.volumes = ["/app/api/:/app:rw"]
+      d.create_args = ["-p", "8080:8080", "--name", "apidev", "--rm"]
+      d.link("mongo:mongo")
+    end
+  end
+  
+  # Mongo machine
+  config.vm.define "mongo" do |a|
+    a.vm.provider "docker" do |d|
+      d.vagrant_vagrantfile = "#{DOCKER_HOST_VAGRANTFILE}"
+      d.image = "mongo:latest"
+      d.name = "mongo"
+      d.create_args = ["-p", "27017:27017"]
+    end
+  end
+end

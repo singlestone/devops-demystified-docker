@@ -1,5 +1,5 @@
 builder:
-    build: .
+    build: ./build
 web:
     build: ./ui
     links:
